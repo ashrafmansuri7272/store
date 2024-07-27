@@ -1,11 +1,14 @@
-import './App.css'
-import Form from './Form'
+import './App.css';
+import Count from './Count';
+import Posts from './Posts';
 
 function App() {
   return (
     <>
-      <Form />
+      <Posts />
+      <Count />
     </>
-  )
+  );
 }
-export default App
+
+export default App;
