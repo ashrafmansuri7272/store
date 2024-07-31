@@ -1,20 +1,14 @@
-// reducer.js
-import { ADD_CART } from './actions';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  cartData: [],
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case ADD_CART:
-      return {
-        ...state,
-        cartData: action.payload,
-      };
-    default:
-      return state;
+const reducer = createSlice({
+  name: 'cartReducer',
+  initialState: { cartData: [] },
+  reducers: {
+    addCartDataAction(initialState, action) {
+      initialState.cartData = action.payload
+    }
   }
-};
+})
 
+export const {addCartDataAction} = reducer.actions;
 export default reducer;
