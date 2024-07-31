@@ -1,8 +1,7 @@
 // MyComponent.js
 import { useState, useEffect } from 'react';
-import store from './store';
 import { useDispatch } from 'react-redux';
-import { addCartAction } from './reducer';
+import { addCartDataAction } from './reducer';
 
 const Posts = () => {
   const [data, setData] = useState([]);
@@ -12,16 +11,12 @@ const Posts = () => {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        dispatch(addCartAction(data))
+        dispatch(addCartDataAction(data))
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
   }, []);
-
-  useEffect(() => {
-    console.log('Updated cartData:', store.getState().cart);
-  }, [store.getState().cart]);
 
   return (
     <div>
