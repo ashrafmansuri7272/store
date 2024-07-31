@@ -1,9 +1,9 @@
 // MyComponent.js
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCartDataAction } from './reducer';
 
-const Posts = () => {
+const Posts: React.FC = () => {
   const [data, setData] = useState([]);
   const dispatch = useDispatch()
   useEffect(() => {
