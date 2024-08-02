@@ -3,7 +3,8 @@ import Column from "./Column";
  
 
 const Kanban: React.FC = () => {
-    
+    const columns = ['backlog', 'todo', 'ongoing', 'done'];
+
     const [tasks, setTasks] = useState({
         backlog: [{id: 0, text: 'task0'}],
         todo: [],
@@ -13,7 +14,18 @@ const Kanban: React.FC = () => {
     const [newTask, setNewTask] =useState('')
 
     const moveTask = (taskId, direction) => {
-
+        let taskFound;
+        const fromColumn = columns.find(col => {
+            taskFound = tasks[col].find(tas => tas.id === taskId)
+            return !!taskFound
+        })
+        const targetColumn = columns[columns.indexOf(fromColumn)+1];
+        setTasks(prevTasks=>({
+            ...prevTasks,
+            [fromColumn]: prevTasks[fromColumn].filter(tass=> tass.id !== taskId),
+            [targetColumn]: [...prevTasks[targetColumn], taskFound]
+        }))
+       
     }   
     const addTask = () => {
         if(newTask.trim() === '') return
