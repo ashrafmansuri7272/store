@@ -16,7 +16,15 @@ const Kanban: React.FC = () => {
 
     }   
     const addTask = () => {
-        
+        if(newTask.trim() === '') return
+        const newTaskObj = {
+            id: Date.now(),
+            text: newTask
+        }
+        setTasks(prevTasks => ({
+            ...prevTasks,
+            backlog: [...prevTasks.backlog, newTaskObj]
+        }))
     }
     const deleteTask = (taskId) => {
         

@@ -44,3 +44,10 @@
 .Kanban-container {
   display: flex;
 }
+
+.Kanban-container-column {
+  margin: 0 50px;
+}
+.Kanban-container-column-task {
+  display: flex;
+}

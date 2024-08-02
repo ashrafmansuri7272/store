@@ -9,7 +9,7 @@ interface ColumnProps {
   }
 
 const Column: React.FC<ColumnProps> = ({name, tasks, moveTask, deleteTask}) => {
-    return (<div>
+    return (<div className="Kanban-container-column">
         <h2>{name}</h2>
         {tasks.map(task=>(
             <Task key={task.id} task={task} moveTask={moveTask} deleteTask={deleteTask}/>

@@ -7,11 +7,11 @@ interface TaskProps {
   }
   
 const Task: React.FC<TaskProps> = ({key, task, moveTask, deleteTask}) => {
-    return (<div key={key}>
+    return (<div key={key} className="Kanban-container-column-task">
         <span>{task.text}</span>
-        <button onClick={()=> moveTask(task.id, 1)}>Forward</button>
-        <i onClick={()=> moveTask(task.id, -1)}>Backward</i>
-        <i onClick={()=> deleteTask(task.id)}>Delete</i>
+        <button onClick={()=> moveTask(task.id, 1)}>{'>'}</button>
+        <button onClick={()=> moveTask(task.id, -1)}>{'<'}</button>
+        <button onClick={()=> deleteTask(task.id)}>Delete</button>
     </div>)
 }
 export default Task
