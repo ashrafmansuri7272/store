@@ -26,7 +26,7 @@ return(
     <>
     <input type='text' placeholder='add New task' value={newTask} onChange={(e)=>setNewTask(e.target.value)}></input>
     <button onClick={addTask}>Create task</button>
-   <div>
+   <div className="Kanban-container">
     <Column name='Backlog' tasks={tasks.backlog} moveTask={moveTask} deleteTask={deleteTask}/>
     <Column name='To Do' tasks={tasks.todo}  moveTask={moveTask} deleteTask={deleteTask}/>
     <Column name='Ongoing' tasks={tasks.ongoing}  moveTask={moveTask} deleteTask={deleteTask}/>

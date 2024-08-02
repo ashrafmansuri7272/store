@@ -1,12 +1,10 @@
 import './App.css';
-import Count from './Count';
-import Posts from './Posts';
+import Kanban from './Kanban';
 
 function App() {
   return (
     <>
-      <Posts />
-      <Count />
+    <Kanban/>
     </>
   );
 }
