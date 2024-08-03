@@ -49,7 +49,7 @@ const Kanban: React.FC = () => {
             if (!currentColumn) return prevTasks;
             return {
                 ...prevTasks,
-                [currentColumn]: prevTasks[currentColumn].splice(deletetaskIndex, 1)
+                [currentColumn]: prevTasks[currentColumn].filter((_, index) => index !== deletetaskIndex)
             }
         })
     }
@@ -59,10 +59,15 @@ const Kanban: React.FC = () => {
             <button onClick={addTask}>Create task</button>
             <input type='text' placeholder='add New task' value={newTask} onChange={(e) => setNewTask(e.target.value)}></input>
             <div className="Kanban-container">
-                <Column name='Backlog' tasks={tasks.backlog} moveTask={moveTask} deleteTask={deleteTask} />
-                <Column name='To Do' tasks={tasks.todo} moveTask={moveTask} deleteTask={deleteTask} />
-                <Column name='Ongoing' tasks={tasks.ongoing} moveTask={moveTask} deleteTask={deleteTask} />
-                <Column name='Done' tasks={tasks.done} moveTask={moveTask} deleteTask={deleteTask} />
+                {columns.map(column => (
+                    <Column
+                        key={column}
+                        name={column.charAt(0).toUpperCase() + column.slice(1)}
+                        tasks={tasks[column]}
+                        moveTask={moveTask}
+                        deleteTask={deleteTask}
+                    />
+                ))}
             </div>
         </>)
 }
