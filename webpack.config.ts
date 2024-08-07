@@ -1,6 +1,7 @@
-import path from 'path';
+import * as path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { Configuration } from 'webpack';
+import 'webpack-dev-server';
 
 const config: Configuration = {
   entry: './src/main.tsx',
