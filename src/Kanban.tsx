@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Column from "./Column";
+import { ErrorBoundary } from "react-error-boundary";
+import Fallback from "./Fallback";
 
 
 const Kanban: React.FC = () => {
@@ -55,6 +57,8 @@ const Kanban: React.FC = () => {
     }
 
     return (
+        <ErrorBoundary FallbackComponent={Fallback}>
+            
         <>
             <button onClick={addTask}>Create task</button>
             <input type='text' placeholder='add New task' value={newTask} onChange={(e) => setNewTask(e.target.value)}></input>
@@ -69,7 +73,11 @@ const Kanban: React.FC = () => {
                     />
                 ))}
             </div>
-        </>)
+        </>
+        
+        </ErrorBoundary>
+        )
+
 }
 
 export default Kanban

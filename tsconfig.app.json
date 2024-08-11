@@ -25,15 +25,18 @@
     "typeRoots": [
       "./node_modules/@types"
     ],
-    "module": "ESNext",
     /* build target */
     "outDir": "./dist/app",
-    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,    "jsx": "react", // or "react-jsx" for React 17+
+    "module": "ESNext", // or "CommonJS" based on your environment
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
   },
   "include": [
-    "src",
-    "webpack.config.ts"
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
   ]
 }
