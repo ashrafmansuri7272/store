@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "skipLibCheck": true,
+    "target": "ES6",
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "noEmit": true,
-    "typeRoots": ["./node_modules/@types"]  // Add this line
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+  
+    "outDir": "./dist"
   },
-  "include": ["vite.config.ts", "webpack.config.ts"]  // Include webpack.config.ts
+  "include": ["webpack.config.ts"]
 }

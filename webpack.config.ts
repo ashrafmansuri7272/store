@@ -1,13 +1,13 @@
-import * as path from 'path';
+import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { Configuration } from 'webpack';
-import 'webpack-dev-server';
-
+const webpack = require('webpack');
+import type { Configuration } from 'webpack';
 const config: Configuration = {
-  entry: './src/main.tsx',
+  entry: './src/index.tsx',
   output: {
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
@@ -15,35 +15,34 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)$/,
         use: 'ts-loader',
         exclude: /node_modules/
       },
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
-      filename: 'index.html'
+      template: './public/index.html'
     })
   ],
   devServer: {
-    static: {
-      directory: path.join(__dirname, 'dist'),
-    },
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000
   }
 };
-
+// Example of using webpack directly
+const compiler = webpack(config);
+compiler.run((err, stats) => {
+  if (err) {
+    console.error(err);
+  } else {
+    console.log(stats.toString());
+  }
+});
 export default config;
